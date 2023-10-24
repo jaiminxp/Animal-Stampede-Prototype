@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class SpawnManagerX : MonoBehaviour
@@ -20,13 +21,20 @@ public class SpawnManagerX : MonoBehaviour
     }
 
     // Spawn random ball at random x position at top of play area
-    void SpawnRandomBall ()
+    void SpawnRandomBall()
     {
         // Generate random ball index and random spawn position
         Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), spawnPosY, 0);
+        GameObject randomBall = Sample(ballPrefabs);
 
         // instantiate ball at random spawn location
-        Instantiate(ballPrefabs[0], spawnPos, ballPrefabs[0].transform.rotation);
+        Instantiate(randomBall, spawnPos, randomBall.transform.rotation);
+    }
+
+    T Sample<T>(T[] array)
+    {
+        int randomIndex = Random.Range(0, array.Length);
+        return array[randomIndex];
     }
 
 }
