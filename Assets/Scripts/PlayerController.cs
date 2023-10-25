@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     float zMin = 0.0f;
     float zMax = 10.0f;
     float verticalInput;
+    [SerializeField]
+    Transform projectileSpawnPoint;
 
     void Update()
     {
@@ -45,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(projectile, transform.position, projectile.transform.rotation);
+            Instantiate(projectile, projectileSpawnPoint.position, projectile.transform.rotation);
         }
     }
 }
