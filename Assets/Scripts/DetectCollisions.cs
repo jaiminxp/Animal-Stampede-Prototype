@@ -18,11 +18,10 @@ public class DetectCollisions : MonoBehaviour
             gameManager.UpdateLives(-1);
             Destroy(gameObject);
         }
-        else
+        else if (other.CompareTag("Animal"))
         {
-            gameManager.UpdateScore(5);
+            other.GetComponent<AnimalHunger>().FeedAnimal(1);
             Destroy(gameObject);
-            Destroy(other.gameObject);
         }
     }
 }
